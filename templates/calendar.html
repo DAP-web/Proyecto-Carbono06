@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="shortcut icon" href="/static/images/calendarImageLogo.png">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <header>
+        <h1 id="headerI">Calendar - ToDoList</h1>
+    </header>
+
+    <div class="monthInput">
+        <label for="month">Month:</label><br>
+        <input type="month" id="month" name="month" placeholder="Enter the month...">
+        <br><br>
+        <!-- <label for="year">Year (YYYY):</label><br>
+        <input type="text" id="year" name="year" placeholder="Enter the year...">
+        <br><br> -->
+        <input type="submit" value="Submit" onclick="selectMonth()">
+    </div>
+
+    <br>
+
+    <div id="boxMesIterativo">
+        <h2 id="mesIterativo"></h2>
+    </div>
+<br>
+    <table id="tableDiasIterativos">
+        <tr>
+            <th>Sunday</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+        </tr>
+    </table>
+
+    <footer>
+        <h4 id="credits">By Carbono 06</h4>
+    </footer>
+    
+<script src="/static/script.js"></script>
+</body>
+
+</html>
