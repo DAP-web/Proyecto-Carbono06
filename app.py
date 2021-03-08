@@ -13,6 +13,9 @@ def home():
 def calendar():
     return render_template("calendar.html")
 
+@app.route("/calendarPage")
+def calendarpage():
+    return render_template("calendarPage.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
