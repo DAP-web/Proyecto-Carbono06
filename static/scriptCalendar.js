@@ -17,6 +17,7 @@ monthsArr = [
     "December"
 ];
 
+//Funcion que ensenha el titulo del mes y anho que se escoja
 function selectMonth(){
     let strDate, dateArr, strMonth, strID;
 
@@ -33,13 +34,25 @@ function selectMonth(){
     cleanValues(strID);
 }
 
+//Limpia la caja del input
 function cleanValues(pID){
     document.getElementById(pID).value = "";
 }
 
+//Coloca las cajas de los dias en la tabla
 function daysBoxes(pMonth, pYear){
-    let intDays, boolBisiesto, strYear, intPrimerDiaMes;
+    let intDays, boolBisiesto, strYear, intPrimerDiaMes, strDate;
+    let datDate;
+
     strYear = pYear;
+    strDate = strYear + "-" + pMonth + "-" + "01";
+    datDate = new Date(strDate);
+
+    if(pMonth == 10 || pMonth == 11 || pMonth == 12){
+        datDate.setHours(25);
+    }
+    
+    console.log(datDate);
     pYear = parseInt(pYear);
 
     boolBisiesto = (pYear % 4) == 0;
@@ -62,8 +75,11 @@ function daysBoxes(pMonth, pYear){
             break; 
         case 2:
             intDays = (boolBisiesto) ? 29:28;
-            break;       
+            break;
+        default:    
     }
+
+
 
 
 
