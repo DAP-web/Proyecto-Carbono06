@@ -38,43 +38,40 @@ function cleanValues(pID){
     document.getElementById(pID).value = "";
 }
 
-// //Coloca las cajas de los dias en la tabla
-// function daysBoxes(pMonth, pYear){
-//     let intDays, boolBisiesto, strYear, intPrimerDiaMes, strDate;
-//     let datDate;
+//Navbar to the right START***********************
+// Function expression to select elements `
 
-//     strYear = pYear;
-//     strDate = strYear + "-" + pMonth + "-" + "01";
-//     datDate = new Date(strDate);
+const selectElement = (s) => document.querySelector(s);
+const navLinks = document.querySelectorAll(".nav-link");
 
-//     if(pMonth == 10 || pMonth == 11 || pMonth == 12){
-//         datDate.setHours(25);
-//     }
-    
-//     console.log(datDate);
-//     pYear = parseInt(pYear);
+selectElement(".burger-menu-icon").addEventListener("click", () => {
+    selectElement(".nav-list").classList.toggle("active");
+    selectElement(".burger-menu-icon").classList.toggle("toggle")
 
-//     boolBisiesto = (pYear % 4) == 0;
+    navLinks.forEach((link, index) => {
+        if (link.style.animation){
+            link.style.animation = ""
+        }else{
+            link.style.animation = `navLinkAnimate 0.5s ease forwards ${ index/7 + 0.5}s`
+            console.log(index/7 + 0.5)
+        }
+    })
+});
 
-//     switch(pMonth){
-//         case 1:
-//         case 3:
-//         case 5:
-//         case 7:
-//         case 8:
-//         case 10:
-//         case 12:
-//             intDays = 31;
-//             break;
-//         case 4:
-//         case 6:
-//         case 9:
-//         case 11:
-//             intDays = 30;
-//             break; 
-//         case 2:
-//             intDays = (boolBisiesto) ? 29:28;
-//             break;
-//         default:    
-//     }
-// }
+navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        selectElement(".nav-list").classList.toggle("active");
+        selectElement(".burger-menu-icon").classList.toggle("toggle");
+
+        navLinks.forEach((link, index) => {
+            if (link.style.animation){
+                link.style.animation = ""
+            }else{
+                link.style.animation = `navLinkAnimate 0.5s ease forwards ${ index/7 + 0.5}s`
+                console.log(index/7 + 0.5)
+            }
+        })
+    })
+})
+
+//Navbar to the right END*************************
