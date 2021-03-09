@@ -19,19 +19,18 @@ monthsArr = [
 
 //Funcion que ensenha el titulo del mes y anho que se escoja
 function selectMonth(){
-    let strDate, dateArr, strMonth, strID;
+    let strDate, dateArr, strMonth;
 
-    strID = "month";
-    strDate = String(document.getElementById(strID).value);
-    dateArr = strDate.split("-");
-    strMonth = monthsArr[parseInt(dateArr[1]) - 1];
-    strDate = strMonth.concat("/", dateArr[0]);
+    strDate = document.getElementById("inputDate").value;
+    dateArr = strDate.split("/");
+    strMonth = monthsArr[parseInt(dateArr[0]) - 1];
+    strDate = strMonth.concat("/", dateArr[1], "/", dateArr[2]);
     document.getElementById("boxMesIterativo").style.display = "block";
     document.getElementById("mesIterativo").innerHTML = strDate;
 
-    daysBoxes(parseInt(dateArr[1]), dateArr[0]);
+    // daysBoxes(parseInt(dateArr[1]), dateArr[0]);
     
-    cleanValues(strID);
+    cleanValues("inputDate");
 }
 
 //Limpia la caja del input
@@ -39,49 +38,43 @@ function cleanValues(pID){
     document.getElementById(pID).value = "";
 }
 
-//Coloca las cajas de los dias en la tabla
-function daysBoxes(pMonth, pYear){
-    let intDays, boolBisiesto, strYear, intPrimerDiaMes, strDate;
-    let datDate;
+// //Coloca las cajas de los dias en la tabla
+// function daysBoxes(pMonth, pYear){
+//     let intDays, boolBisiesto, strYear, intPrimerDiaMes, strDate;
+//     let datDate;
 
-    strYear = pYear;
-    strDate = strYear + "-" + pMonth + "-" + "01";
-    datDate = new Date(strDate);
+//     strYear = pYear;
+//     strDate = strYear + "-" + pMonth + "-" + "01";
+//     datDate = new Date(strDate);
 
-    if(pMonth == 10 || pMonth == 11 || pMonth == 12){
-        datDate.setHours(25);
-    }
+//     if(pMonth == 10 || pMonth == 11 || pMonth == 12){
+//         datDate.setHours(25);
+//     }
     
-    console.log(datDate);
-    pYear = parseInt(pYear);
+//     console.log(datDate);
+//     pYear = parseInt(pYear);
 
-    boolBisiesto = (pYear % 4) == 0;
+//     boolBisiesto = (pYear % 4) == 0;
 
-    switch(pMonth){
-        case 1:
-        case 3:
-        case 5:
-        case 7:
-        case 8:
-        case 10:
-        case 12:
-            intDays = 31;
-            break;
-        case 4:
-        case 6:
-        case 9:
-        case 11:
-            intDays = 30;
-            break; 
-        case 2:
-            intDays = (boolBisiesto) ? 29:28;
-            break;
-        default:    
-    }
-
-
-
-
-
-    
-}
+//     switch(pMonth){
+//         case 1:
+//         case 3:
+//         case 5:
+//         case 7:
+//         case 8:
+//         case 10:
+//         case 12:
+//             intDays = 31;
+//             break;
+//         case 4:
+//         case 6:
+//         case 9:
+//         case 11:
+//             intDays = 30;
+//             break; 
+//         case 2:
+//             intDays = (boolBisiesto) ? 29:28;
+//             break;
+//         default:    
+//     }
+// }

@@ -1,51 +1,42 @@
-<!DOCTYPE html>
-<html>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar</title>
-    <link rel="shortcut icon" href="/static/images/calendarImageLogo.png">
-    <link rel="stylesheet" href="/static/style.css">
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+	<title>Calendar</title>
+
+	<!-- link calendar resources -->
+	<link rel="stylesheet" type="text/css" href="/static/styleGeneral.css" />
+	<link rel="stylesheet" type="text/css" href="/static/styleCalendar.css" />
+	<link rel="stylesheet" type="text/css" href="/static/styleCalendar_Template.css" />
+	<link rel="shortcut icon" href="/static/images/calendarImageLogo.png" />
+	
 </head>
-
 <body>
-    <header>
-        <h1 id="headerI">Calendar - ToDoList</h1>
-    </header>
 
-    <div class="monthInput">
-        <label for="month">Month:</label><br>
-        <input type="month" id="month" name="month" placeholder="Enter the month...">
-        <br><br>
-        <!-- <label for="year">Year (YYYY):</label><br>
-        <input type="text" id="year" name="year" placeholder="Enter the year...">
-        <br><br> -->
-        <input type="submit" value="Submit" onclick="selectMonth()">
-    </div>
+<header>
+	<h1 id="headerI">Calendar || To-Do List</h1>
+</header>
 
-    <br>
-
-    <div id="boxMesIterativo">
-        <h2 id="mesIterativo"></h2>
-    </div>
 <br>
-    <table id="tableDiasIterativos">
-        <tr>
-            <th>Sunday</th>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
-        </tr>
-    </table>
 
-    <footer>
-        <h4 id="credits">By Carbono 06</h4>
-    </footer>
-    
+<div class="inputDate">
+	<label for="inputDate">Pick a date:</label><br>
+	<div><input type="text" name="date" class="tcal" value="" id="inputDate" autocomplete="off" /></div>
+	<br>
+	<button onclick="selectMonth()">Submit!</button>
+</div>
+
+<div id="boxMesIterativo">
+	<h2 id="mesIterativo"></h2>
+</div>
+
+<footer>
+	<h4 id="credits">By Carbono 06</h4>
+</footer>
+
+
+<script type="text/javascript" src="/static/scriptCalendar_Template.js"></script>
 <script src="/static/scriptCalendar.js"></script>
-</body>
 
+</body>
 </html>
