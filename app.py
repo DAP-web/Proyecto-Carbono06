@@ -11,7 +11,12 @@ def home():
 
 @app.route("/calendar")
 def calendar():
+    return render_template("calendar.html")
+
+@app.route("/calendar1")
+def calendar1():
     return render_template("calendarCopy.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,6 +1,6 @@
 "use strict";
 
-var monthsArr;
+var monthsArr, strMonthGlobal;
 
 monthsArr = [
     "January",
@@ -75,3 +75,17 @@ navLinks.forEach(link => {
 })
 
 //Navbar to the right END*************************
+
+
+//FUNCTION TO ADD TASKS TO LOCAL STORAGE START *************
+
+function addTask(){
+
+}
+
+function addTaskToLocalStorage(){
+
+}
+
+
+//FUNCTION TO ADD TASKS TO LOCAL STORAGE START *************
