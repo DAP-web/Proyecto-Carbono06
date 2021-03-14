@@ -18,7 +18,7 @@ monthsArr = [
 ];
 
 //Funcion que ensenha el titulo del mes y anho que se escoja
-function selectMonth(){
+function selectMonth() {
     let strDate, dateArr, strMonth;
 
     strDate = document.getElementById("inputDate").value;
@@ -26,6 +26,7 @@ function selectMonth(){
     strMonth = monthsArr[parseInt(dateArr[0]) - 1];
     strDate = strMonth.concat("/", dateArr[1], "/", dateArr[2]);
     document.getElementById("boxMesIterativo").style.display = "block";
+    document.getElementById("addElement").style.display = "block";
     document.getElementById("mesIterativo").innerHTML = strDate;
 
     // daysBoxes(parseInt(dateArr[1]), dateArr[0]);
@@ -79,13 +80,47 @@ navLinks.forEach(link => {
 
 //FUNCTION TO ADD TASKS TO LOCAL STORAGE START *************
 
-function addTask(){
+function checkTask(){
+    let strDate, strTask;
+    
+    strDate = document.getElementById("mesIterativo").innerHTML;
+    strTask = document.getElementById("task").value;
+    
+    if(strDate === "" || strDate === undefined) {
+        alert("Select a date to add tasks!");
+    } else if(strTask === "") {
+        alert("Enter a task to add!");
+    } else {
+        addTaskToLocalStorage(strDate, strTask);
+    }
 
 }
 
-function addTaskToLocalStorage(){
+function addTaskToLocalStorage(pDate, pTask) {
+    let intId = 0, strUser = "", strPriority = "", objInfo = {}, arrResult = [];
+    
+    intId = Math.floor(Math.random() * 100) + 1;
+    strUser = "Diego" + intId;
+    strPriority = "Alta";
 
+    objInfo = {
+        id:intId, 
+        user:strUser, 
+        priority:strPriority, 
+        date:pDate, 
+        task:pTask
+    };
+
+    if (localStorage.getItem("listTasks") !== null) {
+        arrResult = JSON.parse(localStorage.getItem("listTasks"));
+    }
+
+    arrResult.push(objInfo);
+    localStorage.setItem("listTasks", JSON.stringify(arrResult));
+
+    cleanValues("task");
 }
+
 
 
 //FUNCTION TO ADD TASKS TO LOCAL STORAGE START *************

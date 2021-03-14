@@ -19,12 +19,14 @@
 }
 
 /*Dandole espacio a la cajita del input de la fecha*/
-.inputDate, .addElement {
+.inputDate, #addElement {
     padding-left: 15px;
     padding-top: 10px;
 }
 
-
+#addElement {
+    display: none;
+}
 
 /*ESTILO DE LA NAVBAR A LA DERECHA INICIO*/
 *,
