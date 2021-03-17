@@ -1,6 +1,6 @@
 "use strict";
 
-var monthsArr, strMonthGlobal;
+var monthsArr;  
 
 monthsArr = [
     "January",
@@ -29,14 +29,73 @@ function selectMonth() {
     document.getElementById("addElement").style.display = "block";
     document.getElementById("mesIterativo").innerHTML = strDate;
 
-    // daysBoxes(parseInt(dateArr[1]), dateArr[0]);
-    
+    if(document.getElementById("listToDo").style.display === "none") {
+        document.getElementById("listToDo").style.display = "block";
+    }
+
+    cleanListToDo();
+    listTasks(getTasksFromLocalStorage(strDate));
     cleanValues("inputDate");
 }
 
 //Limpia la caja del input
 function cleanValues(pID){
     document.getElementById(pID).value = "";
+}
+
+function cleanListToDo() {
+    let list, listLength = 0, i = 0;
+
+    list = document.getElementById("lista");
+    listLength = list.childNodes.length;
+
+    while(i < listLength) {
+        list.removeChild(list.childNodes[0]);
+        i++;
+    }
+}
+
+function getTasksFromLocalStorage(pDate) {
+    let arrTasks = [], arrResult = [], intArrLength = 0, currentTask = {};
+
+    if (localStorage.getItem("listTasks") !== null) {
+        arrTasks = JSON.parse(localStorage.getItem("listTasks"));
+    }
+    intArrLength = arrTasks.length;
+
+    for(currentTask of arrTasks) {
+        if(pDate === currentTask.date) {
+            arrResult.push(currentTask);
+        }
+    }
+
+    return arrResult;
+}
+
+function listTasks(pTasks) {
+    let liElement, textNode, spanElement, txt, strTask = "",
+        currentTask = {};
+
+    liElement = document.createElement("li");
+
+    for(currentTask of pTasks) {
+        strTask = currentTask.task + " - Prioridad " + currentTask.priority;
+
+        textNode = document.createTextNode(strTask);
+        liElement.appendChild(textNode);
+
+        document.getElementById("lista").appendChild(liElement);
+
+        spanElement = document.createElement("SPAN");
+        txt = document.createTextNode("\u00d7");
+        spanElement.className = "closeButton";
+        spanElement.appendChild(txt);
+        liElement.appendChild(spanElement);
+
+        closeFunction();
+
+        liElement = document.createElement("li");
+    }
 }
 
 //Navbar to the right START***********************
@@ -81,34 +140,32 @@ navLinks.forEach(link => {
 //FUNCTION TO ADD TASKS TO LOCAL STORAGE START *************
 
 function checkTask(){
-    let strDate, strTask;
+    let strDate, strTask, strPriority;
     
     strDate = document.getElementById("mesIterativo").innerHTML;
     strTask = document.getElementById("task").value;
-    
+    strPriority = document.getElementById("priority").value;
+
     if(strDate === "" || strDate === undefined) {
         alert("Select a date to add tasks!");
-    } else if(strTask === "") {
-        alert("Enter a task to add!");
+    } else if(strTask === "" || strPriority === "") {
+        alert("Fill up all the information!");
     } else {
-        addTaskToLocalStorage(strDate, strTask);
+        addTaskToLocalStorage(strDate, strTask, strPriority);
     }
 
 }
 
-function addTaskToLocalStorage(pDate, pTask) {
-    let intId = 0, strUser = "", strPriority = "", objInfo = {}, arrResult = [];
-    
-    intId = Math.floor(Math.random() * 100) + 1;
-    strUser = "Diego" + intId;
-    strPriority = "Alta";
+function addTaskToLocalStorage(pDate, pTask, pPriority) {
+    let strUser = "", objInfo = {}, arrResult = [];
+
+    strUser = "Diego";
 
     objInfo = {
-        id:intId, 
-        user:strUser, 
-        priority:strPriority, 
-        date:pDate, 
-        task:pTask
+        user: strUser, 
+        priority: pPriority, 
+        date: pDate, 
+        task: pTask
     };
 
     if (localStorage.getItem("listTasks") !== null) {
@@ -118,9 +175,48 @@ function addTaskToLocalStorage(pDate, pTask) {
     arrResult.push(objInfo);
     localStorage.setItem("listTasks", JSON.stringify(arrResult));
 
+    addTaskToList(pTask, pPriority);
+
     cleanValues("task");
+    cleanValues("priority");
 }
 
 
+//FUNCTION TO ADD TASKS TO LOCAL STORAGE END *************
 
-//FUNCTION TO ADD TASKS TO LOCAL STORAGE START *************
+
+//FUNCIONALIDAD PARA LISTAR TAREAS POR DIA
+function addTaskToList(pTask, pPriority) {
+    let liElement, textNode, spanElement, txt, strTask = "";
+
+    strTask = pTask.concat(" - Prioridad ", pPriority);
+
+    liElement = document.createElement("li");
+    textNode = document.createTextNode(strTask);
+    liElement.appendChild(textNode);
+
+    document.getElementById("lista").appendChild(liElement);
+
+    spanElement = document.createElement("SPAN");
+    txt = document.createTextNode("\u00d7");
+    spanElement.className = "closeButton";
+    spanElement.appendChild(txt);
+    liElement.appendChild(spanElement);
+
+    closeFunction();
+}
+
+function closeFunction() {
+    let close, i = 0, div;
+
+    close = document.getElementsByClassName("closeButton");
+    for(i; i < close.length; i++) {
+        close[i].onclick = function() {
+            div = this.parentElement;
+            div.style = "background-color: red";
+        }
+    }
+}
+
+
+w3.includeHTML();

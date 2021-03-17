@@ -13,6 +13,9 @@ def home():
 def calendar():
     return render_template("calendar.html")
 
+@app.route("/todolist")
+def todolist():
+    return render_template("todolist.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

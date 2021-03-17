@@ -69,7 +69,7 @@
 	<label for="inputDate">Pick a date:</label><br>
 	<div><input type="text" name="date" class="tcal" value="" id="inputDate" autocomplete="off" /></div>
 	<br>
-	<button onclick="selectMonth()">Submit!</button>
+	<button onclick="selectMonth()">Submit</button>
 </div>
 
 <div id="boxMesIterativo">
@@ -78,20 +78,31 @@
 
 <br>
 
-
 <div id="addElement">
-	<h2 id="titleTasks">ENTER YOUR TASKS HERE:</h2>
-	<label for="task">Task:</label><br>
-	<input type="text" id="task" name="task" value="" autocomplete="off" />
-	<button onclick="checkTask()">Add Task!</button>
-</div>
+	<div id="titleContainer">
+		<h2 id="titleTasks">ENTER YOUR TASKS HERE:</h2>
+	</div><br>
 
+	<div id="taskToInputContainer">
+		<label for="task">Task:</label><br>
+		<input type="text" id="task" name="task" value="" autocomplete="off" />
+		<br><br>
+		<label for="priority">Set priority:</label><br>
+		<select name="priority" id="priority">
+		<option value="Baja">Baja</option>
+		<option value="Media">Media</option>
+		<option value="Alta">Alta</option>
+		</select><br><br>
+		<button onclick="checkTask()">Add Task</button>
+	</div>
+</div>
+<br>
 <!-- Aqui ira la lista todo con el w3includes -->
-<!-- <div class="containerToDo">
+<div class="containerToDo">
 	<div style="display: none;" id="listToDo" name="w3includes"
-	  w3-include-html="#"></div>
+	  w3-include-html="/todolist"></div>
 	
-</div> -->
+</div>
 
 <footer>
 	<h4 id="credits">By Carbono 06</h4>
