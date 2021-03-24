@@ -1,0 +1,29 @@
+
+body {
+    background-color:#e4b1a5 ;
+  }
+.contenedor {
+  margin: absolute;
+
+}
+.titulo {
+    color:59371c;
+    text-align: center;
+    font-family: Garamond, serif;
+    font-weight: bold;
+    font-size: xx-large;
+    letter-spacing: 10pt;
+  }
+
+.cuerpo {
+  color:59371c;
+  padding-right: 30%;
+  padding-left: 30%;  
+}
+
+#registerimg {
+  width: 300px;
+  height: auto;
+  padding-right: 30%;
+  padding-left: 0%; 
+}
