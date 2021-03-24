@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/static/styleRegistro.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+</head>
+
+<body>
+    <div class="contenedor">
+        <h3 class="titulo">Registro</h3>
+        <hr>
+        <div class="imagen">
+            <img id="registerimg" style="float: right; left: 50%; margin-left: -175px;"
+                src="/static/images/formulario.jpg">
+        </div>
+
+        <div class="cuerpo">
+            <label for="correo_reg">Correo</label><br>
+            <input type="text" name="correo_reg" id="correo_reg" placeholder="Ingrese su correo...">
+
+            <br><br>
+
+            <label for="usuario_reg">Usuario</label><br>
+            <input type="text" name="usuario_reg" id="usuario_reg" placeholder="Su usuario es...">
+            <br><br>
+
+            <label for="contra_reg">Contraseña</label><br>
+            <input type="text" name="contra_reg" id="contra_reg" placeholder="Su contraseña es...">
+
+            <br><br><br>
+            <button onclick="registrarNuevoUsuario()">Registrarse</button>
+        </div>
+    </div>
+    <script src="{{url_for('static', filename='scriptRegistro.js')}}"></script>
+</body>
+
+</html>

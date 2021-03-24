@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styleDashboard.css">
+    <title>Dashboard</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 class="titulo">Dashboard</h2>
+    <hr>
+    <div class="boton">
+        <button onclick="mostrarDatos()">Actualizar</button>
+    </div>
+    <table class="tabla" id="table" style="width:60%">
+        <thead>
+            <tr>
+                <th>Correo</th>
+                <th>Usuario</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+    </table>
+
+    <script src="{{url_for('static', filename='scriptRegistro.js')}}"></script>
+
+</body>
+
+</html>
