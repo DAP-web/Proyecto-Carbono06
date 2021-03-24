@@ -24,11 +24,11 @@
 				<li class="nav-item">
 					<a href="">
 						<img src="" alt="Logo" class="profile-pic nav-link" />
-						<span class="caption nav-link">Username</span>
+						<span class="caption nav-link" id="userNavBar">Username</span>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="" class="nav-link">E-mail</a>
+					<a href="" class="nav-link" id="emailNavBar">E-mail</a>
 				</li>
 				<li class="nav-item">
 					<a href="" class="nav-link">Espacio libre 1</a>
@@ -37,7 +37,7 @@
 					<a href="" class="nav-link">Espacio libre 2</a>
 				</li>
 				<li class="nav-item">
-					<a href="" class="nav-link">Espacio libre 1</a>
+					<a href="/login" onclick="logOfSession()" class="nav-link">Log off</a>
 				</li>
 				<li class="nav-item">
 					<a href="" target="_blank" class="nav-link">
@@ -65,7 +65,9 @@
 
 <br>
 
-<h2 id="saludo"></h2>
+<div class="saludando">
+	<h2 id="saludo"></h2>
+</div>
 
 <div class="inputDate">
 	<label for="inputDate">Pick a date:</label><br>

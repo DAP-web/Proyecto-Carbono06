@@ -1,6 +1,6 @@
 "use strict";
 
-var monthsArr;  
+var monthsArr, userGlobal = "", emailGlobal = "";  
 
 monthsArr = [
     "January",
@@ -16,6 +16,36 @@ monthsArr = [
     "November",
     "December"
 ];
+
+//SALUDO AL ENTRAR START***************************
+function checkSessionStorage() {
+    let currentSessionUser = [];
+
+    if (sessionStorage.getItem("currentUser") !== null) {
+        currentSessionUser = JSON.parse(sessionStorage.getItem("currentUser"));
+    }
+    userGlobal = currentSessionUser[0].usuario;
+    emailGlobal = currentSessionUser[0].correo;
+
+    document.getElementById("saludo").style.display = "block";
+    document.getElementById("saludo").innerHTML = "Welcome " + userGlobal + ".";
+
+    document.getElementById("userNavBar").innerHTML = userGlobal;
+    document.getElementById("emailNavBar").innerHTML = emailGlobal;
+}
+checkSessionStorage();
+
+function logOfSession() {
+    let currentSessionUser = [];
+
+    if (sessionStorage.getItem("currentUser") !== null) {
+        sessionStorage.removeItem("currentUser");
+    }
+
+    window.location.href = "/login";
+}
+
+//SALUDO AL ENTRAT END*****************************
 
 //Funcion que ensenha el titulo del mes y anho que se escoja
 function selectMonth() {
@@ -64,7 +94,7 @@ function getTasksFromLocalStorage(pDate) {
     intArrLength = arrTasks.length;
 
     for(currentTask of arrTasks) {
-        if(pDate === currentTask.date) {
+        if(pDate === currentTask.date && userGlobal === currentTask.user) {
             arrResult.push(currentTask);
         }
     }
@@ -140,7 +170,7 @@ navLinks.forEach(link => {
 //FUNCTION TO ADD TASKS TO LOCAL STORAGE START *************
 
 function checkTask(){
-    let strDate, strTask, strPriority;
+    let strDate = "", strTask = "", strPriority = "";
     
     strDate = document.getElementById("mesIterativo").innerHTML;
     strTask = document.getElementById("task").value;
@@ -157,12 +187,10 @@ function checkTask(){
 }
 
 function addTaskToLocalStorage(pDate, pTask, pPriority) {
-    let strUser = "", objInfo = {}, arrResult = [];
-
-    strUser = "Diego";
+    let objInfo = {}, arrResult = [];
 
     objInfo = {
-        user: strUser, 
+        user: userGlobal, 
         priority: pPriority, 
         date: pDate, 
         task: pTask
@@ -217,6 +245,8 @@ function closeFunction() {
         }
     }
 }
+
+
 
 
 w3.includeHTML();

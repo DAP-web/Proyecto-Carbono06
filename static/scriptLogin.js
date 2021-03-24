@@ -7,22 +7,26 @@ function checkLogin() {
     // var userArray = JSON.parse(sessionStorage.getItem("wUserArray"));
     userArray = JSON.parse(localStorage.getItem("wUserArray"));
 
-    if (user !== null && user !== "") {
-        if (password !== null && password !== "") {
+    if (user !== null && user !== "" && password !== null && password !== "" && userArray !== null) {
+        // if (password !== null && password !== "") {
             var canLogin = checkLoginInfo(user, password, userArray);
 
             if (canLogin === true) {
-                window.location.href = "calendar.html";//HREF DE DASH/CALENDARIO PENDING
+                window.location.href = "/calendar";//HREF DE DASH/CALENDARIO PENDING
             } else {
+                cleanValues("user");
+                cleanValues("passw");
                 alert("User or password are wrong!");
             }
 
-        } else {
-            // alert("La casilla password no puede estar vacia");
-            alert("Fill all the boxes");
-        }
+        // } else {
+        //     // alert("La casilla password no puede estar vacia");
+        //     alert("Fill all the boxes");
+        // }
     } else {
         // alert("La casilla user no puede estar vacia");
+        cleanValues("user");
+        cleanValues("passw");
         alert("Fill all the boxes");
     }
 }
@@ -53,6 +57,10 @@ function saveToSessionStorage(pUserArray) {
 
     currentSessionUser[0] = pUserArray;
     sessionStorage.setItem("currentUser", JSON.stringify(currentSessionUser));
+}
+
+function cleanValues(pID){
+    document.getElementById(pID).value = "";
 }
 
 
