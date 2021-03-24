@@ -4,6 +4,10 @@
     text-align: right;
 }
 
+#saludo {
+    display: none;
+}
+
 /*Div que contiene a la fecha iterativa JS*/
 #boxMesIterativo{
     /* border: 2px solid navy; */

@@ -1,33 +1,42 @@
 function checkLogin() {
+    let user = "", password = "", userArray = [];
 
-    var user = document.getElementById("user").value;
-    var password = document.getElementById("passw").value;
+    user = document.getElementById("user").value;
+    password = document.getElementById("passw").value;
 
-    var userArray = JSON.parse(sessionStorage.getItem("wUserArray"));
+    // var userArray = JSON.parse(sessionStorage.getItem("wUserArray"));
+    userArray = JSON.parse(localStorage.getItem("wUserArray"));
 
     if (user !== null && user !== "") {
         if (password !== null && password !== "") {
-
             var canLogin = checkLoginInfo(user, password, userArray);
+
             if (canLogin === true) {
-                window.location.href = //HREF DE DASH/CALENDARIO PENDING
+                window.location.href = "calendar.html";//HREF DE DASH/CALENDARIO PENDING
             } else {
-                alert("Usuario o contraseña incorrectos");
+                alert("User or password are wrong!");
             }
 
         } else {
-            alert("La casilla password no puede estar vacia");
+            // alert("La casilla password no puede estar vacia");
+            alert("Fill all the boxes");
         }
     } else {
-        alert("La casilla user no puede estar vacia");
+        // alert("La casilla user no puede estar vacia");
+        alert("Fill all the boxes");
     }
-
 }
 
 function checkLoginInfo(user, password, userArray) {
+    let i = 0, arrayLength = 0;
+
+    arrayLength = userArray.length;
+
     if (userArray !== null && userArray.length > 0) {
-        for (var i = 0; i < userArray.length; i++) {
-            if (userArray[i].user === user && userArray[i].password === password) {
+        for (i; i < arrayLength; i++) {
+            //ponerlos en ingles
+            if (userArray[i].usuario === user && userArray[i].contra === password) {
+                saveToSessionStorage(userArray[i]);
                 return true;
             }
         }
@@ -35,17 +44,15 @@ function checkLoginInfo(user, password, userArray) {
     return false;
 }
 
-function checkForValidLoginSession() {
-//extra?????
+function saveToSessionStorage(pUserArray) {
+    let currentSessionUser = [];
 
-    if (sessionStorage.getItem("wUserArray") == null) {
-        window.location.href = //HREF DE DASH/CALENDARIO PENDING
+    if (sessionStorage.getItem("currentUser") !== null) {
+        currentSessionUser = JSON.parse(sessionStorage.getItem("currentUser"));
     }
-    else {
-        if (sessionStorage.length == 0) {
-            window.location.href = //HREF DE DASH/CALENDARIO PENDING
-        }
-    }
+
+    currentSessionUser[0] = pUserArray;
+    sessionStorage.setItem("currentUser", JSON.stringify(currentSessionUser));
 }
 
 
