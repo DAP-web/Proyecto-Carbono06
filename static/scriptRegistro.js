@@ -1,28 +1,31 @@
 //Registro de nuevo usuario
 function registrarNuevoUsuario() {
-    var reg_correo = document.getElementById("correo_reg").value;
-    var reg_usuario = document.getElementById("usuario_reg").value;
-    var reg_contra = document.getElementById("contra_reg").value;
+    let reg_correo = "", reg_usuario = "", reg_contra = "",
+        usuarioArray = [], current_reg = {};
+
+    reg_correo = document.getElementById("correo_reg").value;
+    reg_usuario = document.getElementById("usuario_reg").value;
+    reg_contra = document.getElementById("contra_reg").value;
 
     //alerta al usuario;
-    var usuarioArray = [];
 
-    if (localStorage.getItem("wUsuarioArray") !== null) {
-        usuarioArray = JSON.parse(localStorage.getItem("wUsuarioArray"));
+    if (localStorage.getItem("wUserArray") !== null) {
+        usuarioArray = JSON.parse(localStorage.getItem("wUserArray"));
     }
 
-    var current_reg = {
+    current_reg = {
         correo: reg_correo,
         usuario: reg_usuario,
-        contra: reg_contra
+        contra: reg_contra,
+        rol: "cliente"
     };
-
+    
     usuarioArray.push(current_reg);
 
-    localStorage.setItem("wUsuarioArray", JSON.stringify(usuarioArray));
+    localStorage.setItem("wUserArray", JSON.stringify(usuarioArray));
 
     //Esto es para cuando termine de registro y te mande al login 
-    window.location.href = ""
+    window.location.href = "/login";
 
 }
 

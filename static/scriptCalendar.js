@@ -86,7 +86,8 @@ function cleanListToDo() {
 }
 
 function getTasksFromLocalStorage(pDate) {
-    let arrTasks = [], arrResult = [], intArrLength = 0, currentTask = {};
+    let arrTasks = [], arrResult = [], intArrLength = 0, currentTask = {},
+        boolDate = false, boolUser = false, boolEstado = false;
 
     if (localStorage.getItem("listTasks") !== null) {
         arrTasks = JSON.parse(localStorage.getItem("listTasks"));
@@ -94,7 +95,11 @@ function getTasksFromLocalStorage(pDate) {
     intArrLength = arrTasks.length;
 
     for(currentTask of arrTasks) {
-        if(pDate === currentTask.date && userGlobal === currentTask.user) {
+        boolDate = pDate === currentTask.date;
+        boolUser  = userGlobal === currentTask.usuario;
+        boolEstado = currentTask.estado === "pendiente"
+
+        if(boolDate && boolUser && boolEstado) {
             arrResult.push(currentTask);
         }
     }
@@ -190,10 +195,11 @@ function addTaskToLocalStorage(pDate, pTask, pPriority) {
     let objInfo = {}, arrResult = [];
 
     objInfo = {
-        user: userGlobal, 
+        usuario: userGlobal, 
         priority: pPriority, 
         date: pDate, 
-        task: pTask
+        task: pTask,
+        estado: "pendiente"
     };
 
     if (localStorage.getItem("listTasks") !== null) {
@@ -235,15 +241,25 @@ function addTaskToList(pTask, pPriority) {
 }
 
 function closeFunction() {
-    let close, i = 0, div;
+    let close, i = 0, div, textList;
 
     close = document.getElementsByClassName("closeButton");
     for(i; i < close.length; i++) {
         close[i].onclick = function() {
+            //agregar aqui la funcion para marcar DONE
             div = this.parentElement;
             div.style = "background-color: red";
+            textList = div.innerHTML;
+            marcarTaskHecha(textList);
         }
     }
+}
+
+function marcarTaskHecha(pText) {
+    let arrTasks = [];
+    /*strTask = pTask.concat(" - Prioridad ", pPriority); */
+    arrTasks = pText.split(" ");
+    alert(arrTasks)
 }
 
 

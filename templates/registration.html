@@ -20,7 +20,7 @@
 
         <div class="cuerpo">
             <label for="correo_reg">Correo</label><br>
-            <input type="text" name="correo_reg" id="correo_reg" placeholder="Ingrese su correo...">
+            <input type="email" name="correo_reg" id="correo_reg" placeholder="Ingrese su correo...">
 
             <br><br>
 
@@ -29,13 +29,24 @@
             <br><br>
 
             <label for="contra_reg">Contraseña</label><br>
-            <input type="text" name="contra_reg" id="contra_reg" placeholder="Su contraseña es...">
+            <input type="password" name="contra_reg" id="contra_reg" placeholder="Su contraseña es...">
 
             <br><br><br>
             <button onclick="registrarNuevoUsuario()">Registrarse</button>
+            <br>
+            <h4 id="logLink">Already have an account? 
+                <a href="/login">Sign in here!</a>
+            </h4>
         </div>
+        
     </div>
-    <script src="{{url_for('static', filename='scriptRegistro.js')}}"></script>
+
+    <div class="redLogin">
+        
+    </div>
+
+    <script src="/static/scriptRegistro.js"></script>
+    <!-- <script src="{{url_for('static', filename='scriptRegistro.js')}}"></script> -->
 </body>
 
 </html>

@@ -6,17 +6,34 @@ function preLoadUsers() {
 
     var userArray = [{
         correo: "angela@angela.com",
-        usuario: "angela",
-        contra: "123"
-        // role: "admin"
+        usuario: "Angela",
+        contra: "123",
+        rol: "admin"
     }, {
         correo: "diego@diego.com",
-        usuario: "diego",
-        contra: "456"
+        usuario: "Diego",
+        contra: "456",
+        rol: "admin"
     }, {
         correo: "marcela@marcela.com",
-        usuario: "marcela",
-        contra: "789"
+        usuario: "Marcela",
+        contra: "789",
+        rol: "admin"
+    }, {
+        correo: "aaron@aaron.com",
+        usuario: "Aaron",
+        contra: "753",
+        rol: "cliente"
+    }, {
+        correo: "isela@isela.com",
+        usuario: "Isela",
+        contra: "159",
+        rol: "cliente"
+    }, {
+        correo: "keavy@keavy.com",
+        usuario: "Keavy",
+        contra: "0159",
+        rol: "cliente"
     }];
 
     localStorage.setItem("wUserArray", JSON.stringify(userArray))

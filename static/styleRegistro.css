@@ -1,11 +1,12 @@
-
 body {
     background-color:#e4b1a5 ;
   }
+
 .contenedor {
   margin: absolute;
 
 }
+
 .titulo {
     color:59371c;
     text-align: center;
@@ -25,5 +26,5 @@ body {
   width: 300px;
   height: auto;
   padding-right: 30%;
-  padding-left: 0%; 
+  padding-left: 0%;
 }
