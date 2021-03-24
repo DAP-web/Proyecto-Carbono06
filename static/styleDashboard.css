@@ -1,0 +1,31 @@
+body {
+    background-color:#e4b1a5 ;
+  }
+.titulo {
+    color:59371c;
+    text-align: center;
+    font-family: Garamond, serif;
+    font-weight: bold;
+    font-size: xx-large;
+    letter-spacing: 10pt;  
+}
+
+.boton{
+    color:59371c;
+    padding-right: 75%;
+    padding-left: 70%; 
+}
+/*
+.table, td, th {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: center;
+}
+
+.tabla td :hover {
+    color:59371c ;
+    padding-right: 30%;
+    padding-left: 30%; 
+    text-align: center;
+}
