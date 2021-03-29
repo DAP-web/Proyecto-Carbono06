@@ -98,7 +98,7 @@ function getTasksFromLocalStorage(pDate) {
     for(currentTask of arrTasks) {
         boolDate = pDate === currentTask.date;
         boolUser  = userGlobal === currentTask.usuario;
-        boolEstado = currentTask.estado === "pendiente"
+        boolEstado = currentTask.estado === "pendiente";
 
         if(boolDate && boolUser && boolEstado) {
             arrResult.push(currentTask);
