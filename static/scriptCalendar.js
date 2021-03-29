@@ -257,8 +257,6 @@ function closeFunction() {
     }
 }
 
-
-
 function marcarTaskHecha(pTask) {
     let boolUser = false, boolDate = false, boolEstado = false, 
         intTask = -1, intPriority = -1, currentTask = {}, 
@@ -290,7 +288,6 @@ function marcarTaskHecha(pTask) {
     }
 
     localStorage.setItem("listTasks", JSON.stringify(arrTasks));
-    
 }
 
 w3.includeHTML();
