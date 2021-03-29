@@ -1,6 +1,6 @@
 "use strict";
 
-var monthsArr, userGlobal = "", emailGlobal = "";  
+var monthsArr, userGlobal = "", emailGlobal = "", dateGlobal = "";  
 
 monthsArr = [
     "January",
@@ -49,7 +49,7 @@ function logOfSession() {
 
 //Funcion que ensenha el titulo del mes y anho que se escoja
 function selectMonth() {
-    let strDate, dateArr, strMonth;
+    let strDate = "", dateArr = [], strMonth = "";
 
     strDate = document.getElementById("inputDate").value;
     dateArr = strDate.split("/");
@@ -58,6 +58,7 @@ function selectMonth() {
     document.getElementById("boxMesIterativo").style.display = "block";
     document.getElementById("addElement").style.display = "block";
     document.getElementById("mesIterativo").innerHTML = strDate;
+    dateGlobal = strDate;
 
     if(document.getElementById("listToDo").style.display === "none") {
         document.getElementById("listToDo").style.display = "block";
@@ -241,7 +242,7 @@ function addTaskToList(pTask, pPriority) {
 }
 
 function closeFunction() {
-    let close, i = 0, div, textList;
+    let close, i = 0, div, textList = "";
 
     close = document.getElementsByClassName("closeButton");
     for(i; i < close.length; i++) {
@@ -249,20 +250,47 @@ function closeFunction() {
             //agregar aqui la funcion para marcar DONE
             div = this.parentElement;
             div.style = "background-color: red";
+            div.style.display="none";
             textList = div.innerHTML;
             marcarTaskHecha(textList);
         }
     }
 }
 
-function marcarTaskHecha(pText) {
-    let arrTasks = [];
-    /*strTask = pTask.concat(" - Prioridad ", pPriority); */
-    arrTasks = pText.split(" ");
-    alert(arrTasks)
+
+
+function marcarTaskHecha(pTask) {
+    let boolUser = false, boolDate = false, boolEstado = false, 
+        intTask = -1, intPriority = -1, currentTask = {}, 
+        arrTasks = [];
+    
+    if (localStorage.getItem("listTasks") !== null) {
+        arrTasks = JSON.parse(localStorage.getItem("listTasks"));
+    }
+
+    for(currentTask of arrTasks) {
+
+        boolUser = userGlobal === currentTask.usuario;
+        boolDate = dateGlobal === currentTask.date;
+        boolEstado = currentTask.estado === "pendiente"
+
+        if(boolDate && boolUser && boolEstado) {
+            intTask = pTask.indexOf(currentTask.task);
+            intPriority = pTask.indexOf(currentTask.priority);
+
+            if(intTask == "-1" && intPriority == "-1") {
+                continue;
+            } else {
+                currentTask.estado = "hecho";
+                console.log("Éxito. Llegamos jefe");
+                break;
+            }
+
+        }
+    }
+
+    localStorage.setItem("listTasks", JSON.stringify(arrTasks));
+    
 }
-
-
-
 
 w3.includeHTML();
