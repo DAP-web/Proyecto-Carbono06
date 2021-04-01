@@ -236,6 +236,7 @@ function addTaskToList(pTask, pPriority) {
     txt = document.createTextNode("\u00d7");
     spanElement.className = "closeButton";
     spanElement.appendChild(txt);
+    spanElement.onclick = closeFunction();
     liElement.appendChild(spanElement);
 
     closeFunction();

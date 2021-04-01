@@ -32,6 +32,16 @@
     display: none;
 }
 
+.closeButton {
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #cc6600;
+    border-radius: 30px;
+    cursor: pointer;
+    position: relative;
+    right: -20px;
+}
+
 /*ESTILO DE LA NAVBAR A LA DERECHA INICIO*/
 *,
 *::before,
