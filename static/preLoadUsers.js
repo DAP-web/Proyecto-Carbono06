@@ -34,9 +34,16 @@ function preLoadUsers() {
         usuario: "Keavy",
         contra: "0159",
         rol: "cliente"
+    },{
+        correo: "vic@vic.com",
+        usuario: "Victoria",
+        contra: "6936",
+        rol: "cliente"
     }];
 
-    localStorage.setItem("wUserArray", JSON.stringify(userArray))
+    if (localStorage.getItem("wUserArray") === null) {
+        localStorage.setItem("wUserArray", JSON.stringify(userArray));
+    }
 }
 
 preLoadUsers()
