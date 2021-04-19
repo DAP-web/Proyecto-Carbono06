@@ -1,6 +1,6 @@
 body {
     background-color:#e4b1a5 ;
-  }
+}
 
 .titulo {
     color:59371c;
@@ -15,7 +15,7 @@ body {
     display: none;
 }
 
-.eleccion{
+.eleccion, #opcionRemoverUsuarios{
     padding: 15px;
 }
 

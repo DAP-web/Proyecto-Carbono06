@@ -99,9 +99,9 @@
 		<br><br>
 		<label for="priority">Set priority:</label><br>
 		<select name="priority" id="priority">
-		<option value="Baja">Baja</option>
-		<option value="Media">Media</option>
-		<option value="Alta">Alta</option>
+			<option value="Baja">Baja</option>
+			<option value="Media">Media</option>
+			<option value="Alta">Alta</option>
 		</select><br><br>
 		<button onclick="checkTask()">Add Task</button>
 	</div>
@@ -117,6 +117,24 @@
 <div class="containerDash">
 	<div style="display: none;" id="listUsers" name="w3includes"
 	w3-include-html="/dashboard1"></div>
+</div>
+
+<div id="opcionRemoverUsuarios" style="display: none;">
+	<button onclick='listUsersToDelete()'>REMOVE USER</button>
+</div>
+
+<div id="container-Input-Eliminar" style="display: none;">
+	<div id="titleContainerIE">
+		<h2 id="titleTasks3">USER TO REMOVE:</h2>
+	</div><br>
+
+	<div id="userToRemoveInput">
+		<label for="user">Pick the user you wish to remove:</label><br>
+		<select name="user" id="user">
+			
+		</select><br><br>
+		<button onclick="deleteUserCliente()">Remove user</button>
+	</div>
 </div>
 
 <footer>

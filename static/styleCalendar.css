@@ -23,7 +23,7 @@
 }
 
 /*Dandole espacio a la cajita del input de la fecha*/
-.inputDate, #addElement, .containerToDo, .saludando {
+.inputDate, #addElement, .containerToDo, .saludando, #container-Input-Eliminar {
     padding-left: 15px;
     padding-top: 10px;
 }
