@@ -12,7 +12,7 @@
 }
 
 header {
-    background-image: url("/static/images/imagenes del index/banner.jpg");
+    background-image: url("/static/images/banner.jpg");
     block-size: 100%;
     width: 100%;
 }
