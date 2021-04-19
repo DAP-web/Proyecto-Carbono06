@@ -1,3 +1,5 @@
+let rol = "";
+
 function checkLogin() {
     let user = "", password = "", userArray = [];
 
@@ -12,7 +14,17 @@ function checkLogin() {
             var canLogin = checkLoginInfo(user, password, userArray);
 
             if (canLogin === true) {
-                window.location.href = "/calendar";//HREF DE DASH/CALENDARIO PENDING
+                switch(rol){
+                    case "admin":
+                        window.location.href = "/dashboard";
+                        break;
+                    case "cliente":
+                        window.location.href = "/calendar";//HREF DE DASH/CALENDARIO PENDING
+                        break;
+                    default:
+                        console.log("THERES A PROBLEM!");
+                }
+
             } else {
                 cleanValues("user");
                 cleanValues("passw");
@@ -55,6 +67,7 @@ function saveToSessionStorage(pUserArray) {
         currentSessionUser = JSON.parse(sessionStorage.getItem("currentUser"));
     }
 
+    rol = pUserArray.rol;
     currentSessionUser[0] = pUserArray;
     sessionStorage.setItem("currentUser", JSON.stringify(currentSessionUser));
 }

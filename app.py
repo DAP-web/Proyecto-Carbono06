@@ -25,6 +25,10 @@ def login():
 def registration():
     return render_template("registration.html")
 
+@app.route("/dashboard1")
+def dashboard1():
+    return render_template("dashboard1.html")
+
 @app.route("/dashboard")
 def dashboard():
     return render_template("dashboard.html")

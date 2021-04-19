@@ -1,6 +1,6 @@
 "use strict";
 
-var monthsArr, userGlobal = "", emailGlobal = "", dateGlobal = "";  
+var monthsArr, userGlobal = "", emailGlobal = "", dateGlobal = "", rolGlobal = "";  
 
 monthsArr = [
     "January",
@@ -26,6 +26,7 @@ function checkSessionStorage() {
     }
     userGlobal = currentSessionUser[0].usuario;
     emailGlobal = currentSessionUser[0].correo;
+    rolGlobal = currentSessionUser[0].rol;
 
     document.getElementById("saludo").style.display = "block";
     document.getElementById("saludo").innerHTML = "Welcome " + userGlobal + ".";
@@ -87,25 +88,28 @@ function cleanListToDo() {
 }
 
 function getTasksFromLocalStorage(pDate) {
-    let arrTasks = [], arrResult = [], intArrLength = 0, currentTask = {},
+    let arrTasks = [], arrResult = [], currentTask = {},
         boolDate = false, boolUser = false, boolEstado = false;
 
     if (localStorage.getItem("listTasks") !== null) {
         arrTasks = JSON.parse(localStorage.getItem("listTasks"));
     }
-    intArrLength = arrTasks.length;
 
-    for(currentTask of arrTasks) {
-        boolDate = pDate === currentTask.date;
-        boolUser  = userGlobal === currentTask.usuario;
-        boolEstado = currentTask.estado === "pendiente";
-
-        if(boolDate && boolUser && boolEstado) {
-            arrResult.push(currentTask);
+    if(rolGlobal === "cliente"){
+        for(currentTask of arrTasks) {
+            boolDate = pDate === currentTask.date;
+            boolUser  = userGlobal === currentTask.usuario;
+            boolEstado = currentTask.estado === "pendiente";
+    
+            if(boolDate && boolUser && boolEstado) {
+                arrResult.push(currentTask);
+            }
         }
+        return arrResult;
+        
+    } else{
+        return arrTasks
     }
-
-    return arrResult;
 }
 
 function listTasks(pTasks) {
@@ -114,24 +118,50 @@ function listTasks(pTasks) {
 
     liElement = document.createElement("li");
 
-    for(currentTask of pTasks) {
-        strTask = currentTask.task + " - Prioridad " + currentTask.priority;
 
-        textNode = document.createTextNode(strTask);
-        liElement.appendChild(textNode);
+    if(rolGlobal === "cliente"){
+        for(currentTask of pTasks) {
+            strTask = currentTask.task + " - Prioridad " + currentTask.priority;
+    
+            textNode = document.createTextNode(strTask);
+            liElement.appendChild(textNode);
+    
+            document.getElementById("lista").appendChild(liElement);
+    
+            spanElement = document.createElement("SPAN");
+            txt = document.createTextNode("\u00d7");
+            spanElement.className = "closeButton";
+            spanElement.appendChild(txt);
+            liElement.appendChild(spanElement);
+    
+            closeFunction();
+    
+            liElement = document.createElement("li");
+        }
 
-        document.getElementById("lista").appendChild(liElement);
-
-        spanElement = document.createElement("SPAN");
-        txt = document.createTextNode("\u00d7");
-        spanElement.className = "closeButton";
-        spanElement.appendChild(txt);
-        liElement.appendChild(spanElement);
-
-        closeFunction();
-
-        liElement = document.createElement("li");
+    } else{
+        for(currentTask of pTasks) {
+            
+            strTask = "Usuario: " + currentTask.usuario + " - Task: " + 
+                currentTask.task + " - Prioridad " + currentTask.priority;
+    
+            textNode = document.createTextNode(strTask);
+            liElement.appendChild(textNode);
+    
+            document.getElementById("lista").appendChild(liElement);
+    
+            spanElement = document.createElement("SPAN");
+            txt = document.createTextNode("\u00d7");
+            spanElement.className = "closeButton";
+            spanElement.appendChild(txt);
+            liElement.appendChild(spanElement);
+    
+            closeFunction();
+    
+            liElement = document.createElement("li");
+        }
     }
+
 }
 
 //Navbar to the right START***********************

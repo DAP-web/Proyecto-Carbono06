@@ -1,6 +1,7 @@
 body {
     background-color:#e4b1a5 ;
   }
+
 .titulo {
     color:59371c;
     text-align: center;
@@ -10,11 +11,28 @@ body {
     letter-spacing: 10pt;  
 }
 
-.boton{
-    color:59371c;
-    padding-right: 75%;
-    padding-left: 70%; 
+.inputDate{
+    display: none;
 }
+
+.eleccion{
+    padding: 15px;
+}
+
+#usersList-w3{
+    padding: 15px;
+}
+
+tr, th, td{
+    text-align: center;
+}
+
+table, tr, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+
 /*
 .table, td, th {
     border: 1px solid black;
