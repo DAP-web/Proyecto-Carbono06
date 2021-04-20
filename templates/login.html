@@ -5,37 +5,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Inicio de sesión</title>
     <link rel="shortcut icon" href="/static/images/calendarImageLogo.png" />
     <link rel="stylesheet" href="/static/styleLogin.css" />
-    <link rel="stylesheet" href="/static/styleGeneral.css" />
+    <!--<link rel="stylesheet" href="/static/styleGeneral.css" /> -->
     <!-- <link rel="stylesheet" href="{{url_for('static', filename='styleLogin.css')}}"> -->
 </head>
 
 <body>
     
-    <h1>Login</h1>
-    <hr>
+    
 
-    <div class="containerInput">
-        <label for="user">Username:</label><br>
-        <input type="text" name="user" id="user" placeholder="type...">
-        <br>
-        <br>
-        <label for="passw">Password:</label><br>
-        <input type="password" name="passw" id="passw" placeholder="type...">
-        <br>
-        <br>
-        <button onclick="checkLogin()">Sign in</button>
-    </div>
-    <div class="redRegistration">
-        <h4 id="regLink">Don't have an account yet? 
-            <a href="/registration">Sign up now!</a>
-        </h4>
+    <div class="contenedor">
+        <h3 class="titulo">Inicio de sesión</h3>
+        <hr>
+        <div class="cuerpo">
+            <label for="user">Usuario</label><br>
+            <input type="text" name="user" id="user" placeholder="Ingrese nombre de usuario...">
+            <br><br>
+
+            <label for="passw">Contraseña</label><br>
+            <input type="password" name="passw" id="passw" placeholder="Ingrese contraseña...">
+            <br><br>
+
+            <button class="button" onclick="checkLogin()">Iniciar sesión</button>
+            <br><br><br>
+
+        <div class="redregister">
+            <h4 id="regLink">¿No tienes una cuenta?
+            <a href="/registration">Regístrate</a>
+            </h4>
+        </div>
+
+        </div>
     </div>
 
     <div class="goBack">
-        <a href="/">Go Back</a>
+        <a href="/">Regresar</a>
     </div>
     
     <script src="/static/scriptLogin.js"></script>
