@@ -41,6 +41,117 @@
     position: relative;
     right: -20px;
 }
+/*Estilo de la página */
+#headerI {
+    color:#59371c;
+    font-family: Garamond, serif;
+    font-weight: bold;
+    font-size: xx-large;
+}
+.inputDate{
+    color:#59371c;
+    font-family: Garamond, serif;
+    font-weight: bold;
+    font-size: large;
+}
+
+input[type="text"] {
+  width: 15%;
+  padding: 5px 5px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #555;
+  outline: none;
+}
+input[type="text"]:focus {
+  background-color:#59371c;
+}
+.button {
+    background-color: white;
+    border: none;
+    color: #050404;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 2px 1px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  .button {
+    background-color: white;
+    color:  #59371c;
+    border: 1px solid  #59371c;
+  }
+  .button:hover {
+    background-color: #59371c;
+    color: white;
+  }
+  .saludando {
+    color:white;
+    font-family: Garamond, serif;
+    font-weight: bold;
+    font-size: x-large;
+  }
+/* Poninendo Task*/
+#boxMesIterativo {
+    color: #59371c;
+    font-family: Garamond, serif;
+    font-weight: bold;
+    font-size: large;
+}
+
+#titleTasks{
+    color: white;
+    font-family: Garamond, serif;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+#taskToInputContainer{
+    color:#59371c;
+    font-family: Garamond, serif;
+    font-weight: bold;
+    font-size: large;
+}
+
+#priority{
+    background-color: white;
+    border: none;
+    color: #050404;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 2px 1px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+#priority{
+    background-color: white;
+    color:  #59371c;
+    border: 1px solid  #59371c;
+}
+
+#priority:hover {
+    background-color: #59371c;
+    color: white;
+}
+
+#listTitle {
+    color:#59371c;
+    font-family: Garamond, serif;
+    font-weight: bold;
+    font-size: medium;
+}
+
+#credits{
+    color:white;
+    font-family: Garamond, serif; 
+}
 
 /*ESTILO DE LA NAVBAR A LA DERECHA INICIO*/
 *,
