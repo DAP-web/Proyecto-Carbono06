@@ -141,10 +141,9 @@ function deleteUserCliente(){
 //FUNCTION TO ADD TASKS TO LOCAL STORAGE START *************
 
 function cleanUsersTask(){
-    let select, totalOptions = 0, intContador = 0;
+    let select;
 
     select = document.getElementById("userSelected");
-    totalOptions = select.length;
 
     while(select.length > 0){
         select.remove(select.length-1);
@@ -164,7 +163,7 @@ function listUsersTask(){
 
     for(currentUser of arrUsers){
 
-        if("cliente" === currentUser.rol){
+        if("cliente" === currentUser.rol || userGlobal === currentUser.usuario){
             option = document.createElement("option");
             option.text = currentUser.usuario;
             option.value = currentUser.usuario;
