@@ -34,6 +34,7 @@ function checkSessionStorage() {
     document.getElementById("userNavBar").innerHTML = userGlobal;
     document.getElementById("emailNavBar").innerHTML = emailGlobal;
 }
+
 checkSessionStorage();
 
 function logOfSession() {
@@ -68,6 +69,10 @@ function selectMonth() {
     cleanListToDo();
     listTasks(getTasksFromLocalStorage(strDate));
     cleanValues("inputDate");
+
+    if(rolGlobal === "admin"){
+        listUsersTask()
+    }
 }
 
 //Limpia la caja del input
@@ -108,7 +113,15 @@ function getTasksFromLocalStorage(pDate) {
         return arrResult;
         
     } else{
-        return arrTasks
+        for(currentTask of arrTasks) {
+            boolDate = pDate === currentTask.date;
+            boolEstado = currentTask.estado === "pendiente";
+    
+            if(boolDate && boolEstado) {
+                arrResult.push(currentTask);
+            }
+        }
+        return arrResult
     }
 }
 
@@ -117,7 +130,6 @@ function listTasks(pTasks) {
         currentTask = {};
 
     liElement = document.createElement("li");
-
 
     if(rolGlobal === "cliente"){
         for(currentTask of pTasks) {
@@ -156,7 +168,7 @@ function listTasks(pTasks) {
             spanElement.appendChild(txt);
             liElement.appendChild(spanElement);
     
-            closeFunction();
+            closeFunctionAdmin();
     
             liElement = document.createElement("li");
         }

@@ -94,6 +94,10 @@
 	</div><br>
 
 	<div id="taskToInputContainer">
+		<label for="userSelected">User:</label><br>
+		<select name="userSelected" id="userSelected">
+		</select>
+		<br><br>
 		<label for="task">Task:</label><br>
 		<input type="text" id="task" name="task" value="" autocomplete="off" />
 		<br><br>
@@ -103,7 +107,7 @@
 			<option value="Media">Media</option>
 			<option value="Alta">Alta</option>
 		</select><br><br>
-		<button onclick="checkTask()">Add Task</button>
+		<button onclick="checkTaskAdmin()">Add Task</button>
 	</div>
 </div>
 <br>

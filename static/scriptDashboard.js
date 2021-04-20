@@ -1,7 +1,10 @@
+let userSelectedGlobal = "";
+
 function peakTasks(){
     document.getElementById("listUsers").style.display = "none";
     document.getElementById("input-Date-Box-Hidden").style.display = "block";
     document.getElementById("opcionRemoverUsuarios").style.display = "none";
+    document.getElementById("container-Input-Eliminar").style.display = "none";
 }
 
 function peakUsers(){
@@ -72,9 +75,22 @@ function listUsers(usersArray){
 
 }
 
+function cleanUsersToDelete(){
+    let select, totalOptions = 0, intContador = 0;
+
+    select = document.getElementById("user");
+    totalOptions = select.length;
+
+    while(select.length > 0){
+        select.remove(select.length-1);
+    }
+}
+
 function listUsersToDelete(){
     let select, option, currentUser = {}, arrUsers = [],
         valor = "";
+
+    cleanUsersToDelete();
     document.getElementById("container-Input-Eliminar").style.display = "block";
     select = document.getElementById("user");
 
@@ -122,28 +138,67 @@ function deleteUserCliente(){
 
 //FUNCTION TO ADD TASKS TO LOCAL STORAGE START *************
 
-function checkTask(){
-    let strDate = "", strTask = "", strPriority = "";
+function cleanUsersTask(){
+    let select, totalOptions = 0, intContador = 0;
+
+    select = document.getElementById("userSelected");
+    totalOptions = select.length;
+
+    while(select.length > 0){
+        select.remove(select.length-1);
+    }
+}
+
+function listUsersTask(){
+    let select, option, currentUser = {}, arrUsers = [],
+        valor = "";
+
+    cleanUsersTask();
+    select = document.getElementById("userSelected");
+
+    if (localStorage.getItem("wUserArray") !== null) {
+        arrUsers = JSON.parse(localStorage.getItem("wUserArray"));
+    }
+
+    for(currentUser of arrUsers){
+
+        if("cliente" === currentUser.rol){
+            option = document.createElement("option");
+            option.text = currentUser.usuario;
+            option.value = currentUser.usuario;
+            select.add(option, select[-1]);
+        } else {
+            continue;
+        }
+        
+    }
+
+}
+
+function checkTaskAdmin(){
+    let strDate = "", strTask = "", strPriority = "", strUser = "";
     
+    strUser = document.getElementById("userSelected").value;
+    userSelectedGlobal = strUser;
     strDate = document.getElementById("mesIterativo").innerHTML;
     strTask = document.getElementById("task").value;
     strPriority = document.getElementById("priority").value;
 
     if(strDate === "" || strDate === undefined) {
         alert("Select a date to add tasks!");
-    } else if(strTask === "" || strPriority === "") {
+    } else if(strTask === "" || strPriority === "" || strUser === "") {
         alert("Fill up all the information!");
     } else {
-        addTaskToLocalStorage(strDate, strTask, strPriority);
+        addTaskToLocalStorageAdmin(strDate, strTask, strPriority, strUser);
     }
 
 }
 
-function addTaskToLocalStorage(pDate, pTask, pPriority) {
+function addTaskToLocalStorageAdmin(pDate, pTask, pPriority, pUser) {
     let objInfo = {}, arrResult = [];
 
     objInfo = {
-        usuario: userGlobal, 
+        usuario: pUser, 
         priority: pPriority, 
         date: pDate, 
         task: pTask,
@@ -157,8 +212,9 @@ function addTaskToLocalStorage(pDate, pTask, pPriority) {
     arrResult.push(objInfo);
     localStorage.setItem("listTasks", JSON.stringify(arrResult));
 
-    addTaskToList(pTask, pPriority);
+    addTaskToListAdmin(pTask, pPriority, pUser);
 
+    cleanValues("userSelected")
     cleanValues("task");
     cleanValues("priority");
 }
@@ -168,10 +224,11 @@ function addTaskToLocalStorage(pDate, pTask, pPriority) {
 
 
 //FUNCIONALIDAD PARA LISTAR TAREAS POR DIA
-function addTaskToList(pTask, pPriority) {
+function addTaskToListAdmin(pTask, pPriority, pUser) {
     let liElement, textNode, spanElement, txt, strTask = "";
 
-    strTask = pTask.concat(" - Prioridad ", pPriority);
+    strTask = "Usuario: ".concat(pUser, " - Task: ", 
+        pTask, " - Prioridad ", pPriority);
 
     liElement = document.createElement("li");
     textNode = document.createTextNode(strTask);
@@ -183,13 +240,13 @@ function addTaskToList(pTask, pPriority) {
     txt = document.createTextNode("\u00d7");
     spanElement.className = "closeButton";
     spanElement.appendChild(txt);
-    spanElement.onclick = closeFunction();
+    spanElement.onclick = closeFunctionAdmin();
     liElement.appendChild(spanElement);
 
-    closeFunction();
+    closeFunctionAdmin();
 }
 
-function closeFunction() {
+function closeFunctionAdmin() {
     let close, i = 0, div, textList = "";
 
     close = document.getElementsByClassName("closeButton");
@@ -200,23 +257,37 @@ function closeFunction() {
             div.style = "background-color: red";
             div.style.display="none";
             textList = div.innerHTML;
-            marcarTaskHecha(textList);
+            marcarTaskHechaAdmin(textList);
         }
     }
 }
 
-function marcarTaskHecha(pTask) {
+function marcarTaskHechaAdmin(pTask) {
     let boolUser = false, boolDate = false, boolEstado = false, 
         intTask = -1, intPriority = -1, currentTask = {}, 
-        arrTasks = [];
+        arrTasks = [], currentUser = {}, userName = "",
+        arrUsers = [], boolFound = false;
     
     if (localStorage.getItem("listTasks") !== null) {
         arrTasks = JSON.parse(localStorage.getItem("listTasks"));
     }
 
+    if (localStorage.getItem("wUserArray") !== null) {
+        arrUsers = JSON.parse(localStorage.getItem("wUserArray"));
+    }
+
+    for(currentUser of arrUsers){
+        boolFound = -1 !== pTask.indexOf(currentUser.usuario);
+
+        if(boolFound){
+            userName = currentUser.usuario;
+            break;
+        }
+    }
+
     for(currentTask of arrTasks) {
 
-        boolUser = userGlobal === currentTask.usuario;
+        boolUser = userName === currentTask.usuario;
         boolDate = dateGlobal === currentTask.date;
         boolEstado = currentTask.estado === "pendiente"
 
