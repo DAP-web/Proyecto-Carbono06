@@ -58,16 +58,18 @@ function getUsersFromLocalStorage(){
 }
 
 function listUsers(usersArray){
-    let table, row, cell1, cell2, currentUser = {},
-        button;
+    let table, row, cell1, cell2, currentUser = {};
 
     table = document.getElementById("usersList-w3");
 
     for(currentUser of usersArray){
         row = table.insertRow(-1);
+        row.setAttribute("id", "trForTableUser")
 
         cell1 = row.insertCell(0);
         cell2 = row.insertCell(1);
+        cell1.setAttribute("id", "tdforTableUser")
+        cell2.setAttribute("id", "tdforTableUser")
     
         cell1.innerHTML = currentUser.correo;
         cell2.innerHTML = currentUser.usuario;

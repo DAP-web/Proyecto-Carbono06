@@ -23,20 +23,62 @@ body {
     padding: 15px;
 }
 
+#cajaDashboard{
+    padding-left: 15px;
+}
 
-tr, th, td{
+tr#trForTableUser, th#thforUsers, td#tdforTableUser{
     text-align: center;
 }
 
+/* #cajaDashboard tr{
+    text-align: center;
+}
 
-table, tr, th, td{
-  border-collapse: collapse;
+#cajaDashboard th{
+    text-align: center;
+}
+
+#cajaDashboard td{
+    text-align: center;
+} */
+
+
+div#cajaDashboard table, tr#trForTableUser, th#thforUsers, td#tdforTableUser{
+    border-collapse: collapse;
     width: 50%;
 }
 
+/* div table{
+    border-collapse: collapse;
+    width: 50%;
+}
 
+div tr{
+    border-collapse: collapse;
+    width: 50%;
+}
 
-.table, td, th {
+div th{
+    border-collapse: collapse;
+    width: 50%;
+}
+
+div td{
+    border-collapse: collapse;
+    width: 50%; 
+}
+*/
+
+table#usersList-w3, th#thforUsers, td#tdforTableUser{
+    border-collapse: collapse;
+     padding: 5px;
+     text-align: center;
+     border-bottom: 1px solid black;
+     background-color:  #f0d0c1;
+ }
+
+/* div table{
    border-collapse: collapse;
     padding: 5px;
     text-align: center;
@@ -44,16 +86,31 @@ table, tr, th, td{
     background-color:  #f0d0c1;
 }
 
+div td{
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    background-color:  #f0d0c1;
+}
 
-.tabla td :hover {
+div th{
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    background-color:  #f0d0c1;
+} */
+
+/* div table td:hover {
     color:59371c ;
     padding-right: 30%;
     padding-left: 30%; 
     text-align: center;
-}
+} */
 
 
-table th {
+#cajaDashboard table th {
     background-color: #CA8462;
 }
 
