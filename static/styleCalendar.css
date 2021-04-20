@@ -116,7 +116,7 @@ input[type="text"]:focus {
     font-size: large;
 }
 
-#priority{
+#priority, #userSelected{
     background-color: white;
     border: none;
     color: #050404;
@@ -130,13 +130,13 @@ input[type="text"]:focus {
     cursor: pointer;
 }
 
-#priority{
+#priority, #userSelected{
     background-color: white;
     color:  #59371c;
     border: 1px solid  #59371c;
 }
 
-#priority:hover {
+#priority:hover, #userSelected:hover{
     background-color: #59371c;
     color: white;
 }

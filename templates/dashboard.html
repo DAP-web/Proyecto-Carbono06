@@ -24,7 +24,7 @@
 			<ul class="nav-list">
 				<li class="nav-item">
 					<a href="">
-						<img src="" alt="Logo" class="profile-pic nav-link" />
+						<img src="/static/images/light.jpg" alt="Logo" class="profile-pic nav-link" />
 						<span class="caption nav-link" id="userNavBar">Username</span>
 					</a>
 				</li>
@@ -71,15 +71,15 @@
 </div>
 
 <div class="eleccion">
-	<button onclick="peakUsers()">Peak users</button>
-	<button onclick="peakTasks()">Peak tasks</button>
+	<button class="button" onclick="peakUsers()">Peak users</button>
+	<button class="button" onclick="peakTasks()">Peak tasks</button>
 </div>
 
 <div class="inputDate" id="input-Date-Box-Hidden">
 	<label for="inputDate">Pick a date:</label><br>
 	<div><input type="text" name="date" class="tcal" value="" id="inputDate" autocomplete="off" /></div>
 	<br>
-	<button onclick="selectMonth()">Submit</button>
+	<button class="button" onclick="selectMonth()">Submit</button>
 </div>
 
 <div id="boxMesIterativo">
@@ -107,7 +107,7 @@
 			<option value="Media">Media</option>
 			<option value="Alta">Alta</option>
 		</select><br><br>
-		<button onclick="checkTaskAdmin()">Add Task</button>
+		<button class="button" onclick="checkTaskAdmin()">Add Task</button>
 	</div>
 </div>
 <br>
