@@ -1,11 +1,11 @@
 body{
-    background-color: #174972;
+    background-color: #663300;
 }
 
 h3{
     font: 64px Garamond, sans-serif;
     text-align: center;
-    color: #ffc1d3;
+    color: rgb(199, 173, 151);
 }
 
 li{
@@ -40,7 +40,7 @@ a#back{
     font-family: Garamond, sans-serif;
     color: black;
     background-color: #ffffff;
-    border: 3px double #174972;
+    border: 3px double black;
 }
 
 .list{
