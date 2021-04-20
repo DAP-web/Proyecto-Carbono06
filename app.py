@@ -33,5 +33,17 @@ def dashboard1():
 def dashboard():
     return render_template("dashboard.html")
 
+@app.route("/beneficios")
+def beneficios():
+    return render_template("beneficios.html")
+
+@app.route("/acerca")
+def acerca():
+    return render_template("acerca.html")
+
+@app.route("/contactanos")
+def contactanos():
+    return render_template("contactanos.html")
+
 if __name__ == "__main__":
     app.run(debug=True)

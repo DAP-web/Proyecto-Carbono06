@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/images/calendarImageLogo.png" />
     <link rel="stylesheet" href="/static/styleIndex.css">
     <title>Landing Page</title>
 </head>
@@ -13,16 +15,31 @@
         <header>
             <ul class="navigation">
                 <li><a href="">Inicio</a></li>
-                <li><a href="">Beneficios</a></li>
-                <li><a href="">Acerca de nosotros</a></li>
-                <li><a href="">Contáctanos</a></li>
+                <li><a href="" onclick="showBeneficios()">Beneficios</a></li>
+                <li><a href="" onclick="showAcerca()">Acerca de nosotros</a></li>
+                <li><a href="" onclick="showContacto()">Contáctanos</a></li>
             </ul>
         </header>
+
+        <div id="containerBeneficios">
+            <div style="display: none;" id="beneficios" name="w3includes"
+	            w3-include-html="/beneficios"></div>
+        </div>
+
+        <div id="containerAcerca">
+            <div style="display: none;" id="acerca1" name="w3includes"
+	            w3-include-html="/acerca"></div>
+        </div>
+
+        <div id="containerContacto">
+            <div style="display: none;" id="contactanos1" name="w3includes"
+	            w3-include-html="/contactanos"></div>
+        </div>
 
         <div class="content">
             <div class="textBox">
                 <h2>TO DO LIST<br><span>Calendar</span></h2>
-                <a href="#">Ver el calendario</a>
+                <a href="/login">Ver el calendario</a>
             </div>
 
         </div>
@@ -56,6 +73,7 @@
 
     </section>
 
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
     <script src="/static/scriptIndex.js"></script>
 </body>
 </html>
